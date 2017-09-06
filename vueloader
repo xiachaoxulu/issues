@@ -1,0 +1,25 @@
+const sourceMap = require('source-map')
+var rawSourceMap = {
+    "version": 3,
+    "sources": ["webpack:///util (ignored)?e60d", "webpack:///./src/client/entry/404.js", "webpack:///src/client/page/404/404.vue", "webpack:///./src/client/page/404/404.vue?7264", "webpack:///./src/client/page/404/404.vue?dc9d", "webpack:///./src/client/page/404/404.vue?5590"],
+    "names": ["config", "reportUrl", "errorHandler", "err", "vm", "info", "el", "template", "components", "App"],
+    "mappings": ";;;;;AAAA,e;;;;;;;;;;ACAA;;;;AACA;;;;AACA;;;;;;AAEA,oBAAUA,MAAV,CAAiB;AACbC,eAAW;AADE,CAAjB;AAGA,cAAID,MAAJ,CAAWE,YAAX,GAA0B,UAAUC,GAAV,EAAeC,EAAf,EAAmBC,IAAnB,EAAyB;AAC/C,UAAMF,GAAN;AACH,CAFD;AAGA,kBAAQ;AACJG,QAAI,MADA;AAEJC,cAAU,QAFN;AAGJC,gBAAY;AACRC;AADQ;AAHR,CAAR,E;;;;;;;;;;;;;;;ACNA;;;0BAEA;eAGA;AACA;gCACA;AACA;mBAEA,CACA;AACA;AAXA,E;;;;;;;ACLA,yC;;;;;;;;;;;ACAA;AAAA;AACA,yBAA6V;AAC7V;AACA;AACA;AACA;AACA;AAC+I;AAC/I;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;AAEA;;;;;;;;;ACtBA,0BAA0B,aAAa,0BAA0B;AACjE;AACA;AACA,GAAG;AACH;AACA;AACA,iBAAiB;AACjB,kE",
+    "file": "script/404.js",
+    "sourceRoot": ""
+}
+
+var smc = new sourceMap.SourceMapConsumer(rawSourceMap)
+
+console.log(smc.sources)
+// 这是打包后js的 代码位置，想得到源代码的位置
+console.log(smc.originalPositionFor({
+    line: 36,
+    column: 0
+}))
+// ====> ok 成功获取
+// 这是打包后vue组件的 代码位置，想得到源代码的位置
+console.log(smc.originalPositionFor({
+    line: 65,
+    column: 0
+}))
+//====> 失败 { source: null, line: null, column: null, name: null }
